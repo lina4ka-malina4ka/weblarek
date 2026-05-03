@@ -1,10 +1,10 @@
-import { IBuyer, TBuyerErrors, TPayment } from '../../../types';
+import { IBuyer, TBuyerErrors, TPayment } from "../../../types";
 
 export class Buyer {
-  protected payment: TPayment = '';
-  protected email = '';
-  protected phone = '';
-  protected address = '';
+  protected payment: TPayment = "";
+  protected email = "";
+  protected phone = "";
+  protected address = "";
 
   setPayment(payment: TPayment): void {
     this.payment = payment;
@@ -29,29 +29,29 @@ export class Buyer {
   }
 
   clear(): void {
-    this.payment = '';
-    this.email = '';
-    this.phone = '';
-    this.address = '';
+    this.payment = "";
+    this.email = "";
+    this.phone = "";
+    this.address = "";
   }
 
   validate(): TBuyerErrors {
     const errors: TBuyerErrors = {};
 
     if (!this.payment) {
-      errors.payment = 'Не выбран вид оплаты';
+      errors.payment = "Не выбран вид оплаты";
     }
 
     if (!this.address) {
-      errors.address = 'Укажите адрес';
+      errors.address = "Укажите адрес";
     }
 
     if (!this.email) {
-      errors.email = 'Укажите email';
+      errors.email = "Укажите email";
     }
 
     if (!this.phone) {
-      errors.phone = 'Укажите телефон';
+      errors.phone = "Укажите телефон";
     }
 
     return errors;
