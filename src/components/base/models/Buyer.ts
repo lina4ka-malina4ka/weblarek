@@ -42,7 +42,7 @@ export class Buyer {
       errors.payment = "Не выбран вид оплаты";
     }
 
-    if (!this.address) {
+    if(!this.address.trim()) {
       errors.address = "Укажите адрес";
     }
 

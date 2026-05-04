@@ -48,16 +48,15 @@ console.log("Ошибки после заполнения:", buyerModel.validate
 const api = new Api(API_URL);
 const webLarekApi = new WebLarekApi(api);
 
-webLarekApi
-  .getProducts()
-  .then((items) => {
-    productsModel.setItems(items);
+webLarekApi.getProducts()
+  .then((response) => {
+    productsModel.setItems(response.items);
 
     console.log(
-      "Сервер: товары получены и сохранены в модель Products:",
-      productsModel.getItems(),
+      'Сервер: товары получены и сохранены в модель Products:',
+      productsModel.getItems()
     );
   })
   .catch((error) => {
-    console.error("Сервер: ошибка при получении товаров:", error);
+    console.error('Сервер: ошибка при получении товаров:', error);
   });

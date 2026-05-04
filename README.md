@@ -210,7 +210,7 @@ type TBuyerErrors = Partial<Record<keyof IBuyer, string>>;
 
 Для работы с сервером используется класс `WebLarekApi`.
 
-Этот класс не хранит данные сам, а только отправляет запросы на сервер и возвращает результат. Внутри он использует базовый класс `Api`, который уже умеет делать `get` и `post` запросы.
+Этот класс не хранит данные сам, а только отправляет запросы на сервер и возвращает результат. нутри он использует объект, соответствующий интерфейсу `IApi`, у которого есть методы `get` и `post`.
 
 Класс `WebLarekApi` нужен для двух действий:
 
@@ -219,8 +219,16 @@ type TBuyerErrors = Partial<Record<keyof IBuyer, string>>;
 
 Методы класса:
 
-- `getProducts(): Promise<IProduct[]>` — отправляет GET-запрос на `/product/` и возвращает массив товаров;
+- `getProducts(): Promise<IProductsResponse>` — отправляет GET-запрос на `/product/`  и возвращает объект ответа сервера с массивом товаров в поле `items`;
 - `orderProducts(order: IOrder): Promise<IOrderResult>` — отправляет POST-запрос на `/order/` и возвращает результат оформления заказа.
+
+Конструктор класса:
+
+```ts
+constructor(api: IApi)
+getProducts(): Promise<IProductsResponse>
+orderProducts(order: IOrder): Promise<IOrderResult>
+```
 
 Для ответа сервера с товарами используется тип:
 

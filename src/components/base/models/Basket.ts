@@ -20,7 +20,7 @@ export class Basket {
   }
 
   getTotal(): number {
-    return this.items.reduce((sum, item) => sum + (item.price || 0), 0);
+    return this.items.reduce((sum, item) => sum + (item.price ?? 0), 0);
   }
 
   getCount(): number {
